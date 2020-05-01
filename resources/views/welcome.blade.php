@@ -3,98 +3,68 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <!-- Fontfaces CSS-->
+        <link href="{{ asset('/backend/css/font-face.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+        <!-- Vendor CSS-->
+        <link href="{{ asset('/backend/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/slick/slick.css" rel="stylesheet') }}" media="all">
+        <link href="{{ asset('/backend/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+        <link href="{{ asset('/backend/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+        <!-- Main CSS-->
+        <link href="{{ asset('/backend/css/theme.css') }}" rel="stylesheet" media="all">
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+            a .active{
+                color: #4272d7;
+                font-weight: 500;
             }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+            .invalid-feedback {
+             display: block;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+            text-align: left;
+        }
         </style>
+
+
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+    <body class="animsition">
+        <div class="page-wrapper">
+        <div id="app"></div>
         </div>
+
+        <script src="{{asset('js/app.js')}}"></script>
+        <!-- Jquery JS-->
+        <script src="{{ asset('/backend/vendor/jquery-3.2.1.min.js') }}"></script>
+        <!-- Bootstrap JS-->
+        <script src="{{ asset('/backend/vendor/bootstrap-4.1/popper.min.js') }}"></script>
+        <!-- Vendor JS       -->
+        <script src="{{ asset('/backend/vendor/slick/slick.min.js') }}">
+        </script>
+        <script src="{{ asset('/backend/vendor/wow/wow.min.js') }}"></script>
+        <script src="{{ asset('/backend/vendor/animsition/animsition.min.js') }}"></script>
+        <script src="{{ asset('/backend/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
+        </script>
+        <script src="{{ asset('/backend/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset('/backend/vendor/counter-up/jquery.counterup.min.js') }}">
+        </script>
+        <script src="{{ asset('/backend/vendor/circle-progress/circle-progress.min.js') }}"></script>
+        <script src="{{ asset('/backend/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+        <script src="{{ asset('/backend/vendor/chartjs/Chart.bundle.min.js') }}"></script>
+        <script src="{{ asset('/backend/vendor/select2/select2.min.js') }}">
+        </script>
+
+        <!-- Main JS-->
+        <script src="{{ asset('/backend/js/main.js') }}"></script>
     </body>
 </html>
