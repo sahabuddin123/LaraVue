@@ -379,13 +379,14 @@ export default {
                 );
                 this.categories.map(category => {
                     if (category.id == response.data.id) {
-                        //console.log('ok');
-                        category = response.data;
+                        for(let key in response.data){
+                            category[key] = response.data[key];
+                        }
                     }
                 });
                 this.$refs.editCategoryModel.hide();
                 this.flashMessage.success({
-                    message: "Category edit successfully!",
+                    message: "Category Update successfully!",
                     time: 5000
                 });
             } catch (error) {

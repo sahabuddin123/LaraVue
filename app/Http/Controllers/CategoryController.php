@@ -114,7 +114,7 @@ class CategoryController extends Controller
                 $category->image = $path;
                 Storage::delete($oldpath);
             }
-            if($category->save()){
+            if($category->update()){
                 return response()->json($category, 200);
                 // return response()->json([
                 //     'data' => $category,
