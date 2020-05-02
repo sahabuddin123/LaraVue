@@ -15,3 +15,6 @@ export function deleteCategory(id) {
 export function updateCategory(id, data) {
     return httpFile().post(`categories/${id}`, data);
 }
+export function loadMore(nextpage) {
+    return httpFile().get(`categories?page=${nextpage}`);
+}

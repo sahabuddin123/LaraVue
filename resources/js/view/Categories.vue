@@ -33,7 +33,7 @@
                                         `${$store.state.serverPath}/storage/${category.image}`
                                     "
                                     :alt="category.name"
-                                    style="max-height:120px;"
+                                    style="max-height:120px;max-width:50px;"
                                 />
                             </td>
                             <td>
@@ -53,7 +53,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="text-center" v-show="moreExists">
+                    <button type="button" class="btn btn-primary btn-sm" v-on:click="loadMore"><span class="fa fa-arrow-down"></span> Load More</button>
             </div>
+               </div>
         </div>
         <!-- Create modal -->
         <b-modal ref="NewCategoryModel" hide-footer title>
@@ -232,6 +235,8 @@ export default {
                 name: "",
                 image: ""
             },
+            moreExists: false,
+            nextpage: 0,
             editCategoryData: {},
             errors: {}
         };
@@ -247,6 +252,13 @@ export default {
                 //console.log(response);
                 this.categories = response.data.data;
                 //console.log(this.categories);
+                if(response.data.current_page < response.data.last_page){
+                    this.moreExists = true;
+                    this.nextpage = response.data.current_page + 1;
+                }
+                else{
+                    this.moreExists = false;
+                }
             } catch (error) {
                 this.flashMessage.error({
                     message: "Oops! Some error, Please Refresh",
@@ -392,6 +404,25 @@ export default {
             } catch (error) {
                 this.flashMessage.error({
                     message: error.response.data,
+                    time: 5000
+                });
+            }
+        },
+        loadMore: async function(){
+            try {
+                const response = await CategoryServices.loadMore(this.nextpage);
+                if(response.data.current_page < response.data.last_page){
+                    this.moreExists = true;
+                    this.nextpage = response.data.current_page + 1;
+                } else{
+                    this.moreExists = false;
+                }
+                response.data.data.forEach(data => {
+                    this.categories.push(data);
+                });
+            } catch (error) {
+                 this.flashMessage.error({
+                    message: 'some error please reload again',
                     time: 5000
                 });
             }
